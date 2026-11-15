@@ -1,0 +1,68 @@
+const form = document.getElementById("cbcForm");
+const resultStatus = document.getElementById("resultStatus");
+const riskScore = document.getElementById("riskScore");
+const resultSummary = document.getElementById("resultSummary");
+const riskFill = document.getElementById("riskFill");
+
+const setStatusTone = (status) => {
+  const resultCard = document.querySelector(".results-card");
+  const dot = document.querySelector(".status-dot");
+
+  if (status === "Normal") {
+    resultCard.style.borderColor = "rgba(124, 229, 163, 0.4)";
+    dot.style.background = "#7ce5a3";
+  } else if (status === "Mild") {
+    resultCard.style.borderColor = "rgba(255, 200, 87, 0.4)";
+    dot.style.background = "#ffc857";
+  } else if (status === "Moderate") {
+    resultCard.style.borderColor = "rgba(255, 130, 90, 0.42)";
+    dot.style.background = "#ff9f5d";
+  } else if (status === "Severe") {
+    resultCard.style.borderColor = "rgba(255, 107, 107, 0.45)";
+    dot.style.background = "#ff6b6b";
+  } else {
+    resultCard.style.borderColor = "rgba(148, 178, 191, 0.25)";
+    dot.style.background = "#2ba7ff";
+  }
+};
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const payload = {
+    age: Number(document.getElementById("age").value),
+    sex: document.getElementById("sex").value,
+    hb: Number(document.getElementById("hb").value),
+    rbc: Number(document.getElementById("rbc").value),
+    hct: Number(document.getElementById("hct").value),
+    mcv: Number(document.getElementById("mcv").value),
+    mch: Number(document.getElementById("mch").value),
+    mchc: Number(document.getElementById("mchc").value),
+  };
+
+  try {
+    const response = await fetch("/api/analyze", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const result = await response.json();
+
+    resultStatus.textContent = result.status;
+    riskScore.textContent = `${result.risk_score}%`;
+    resultSummary.textContent = result.summary;
+    setStatusTone(result.status);
+
+    const percentage = Math.min(Math.max(result.risk_score, 0), 100);
+    riskFill.style.width = `${percentage}%`;
+  } catch (error) {
+    resultStatus.textContent = "Error";
+    riskScore.textContent = "0%";
+    resultSummary.textContent = "Unable to analyze the values. Please try again.";
+    setStatusTone("Incomplete data");
+    riskFill.style.width = "0%";
+  }
+});

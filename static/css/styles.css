@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HemaNova AI</title>
+    <meta
+      name="description"
+      content="HemaNova AI — professional healthcare website prototype for anemia awareness and CBC analysis."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">H</div>
+          <div class="brand-text">
+            <span class="brand-name">HemaNova</span>
+            <small>AI</small>
+          </div>
+        </div>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#home">Home</a>
+          <a href="#analysis">Blood Analysis</a>
+          <a href="#results">AI Results</a>
+          <a href="#about">About</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero" id="home">
+          <div class="hero-copy">
+            <p class="eyebrow">Healthcare intelligence</p>
+            <h1>Build a professional AI healthcare website for anemia awareness and CBC analysis.</h1>
+            <p class="lead">
+              HemaNova AI is a prototype platform designed to educate users about anemia,
+              visualize CBC parameters, and demonstrate AI-style risk interpretation.
+            </p>
+            <div class="hero-actions">
+              <a href="#analysis" class="primary-btn">Run CBC analysis</a>
+              <a href="#about" class="secondary-btn">Learn more</a>
+            </div>
+            <ul class="mini-stats">
+              <li><strong>4</strong><span>Core panels</span></li>
+              <li><strong>6</strong><span>CBC metrics</span></li>
+              <li><strong>AI</strong><span>Prototype model</span></li>
+            </ul>
+          </div>
+
+          <div class="hero-visual" aria-label="Dashboard preview">
+            <div class="device-frame">
+              <div class="frame-header">
+                <span class="status-pill">●</span>
+                <span class="time">09:41</span>
+                <span class="signal">▣▣▣</span>
+              </div>
+
+              <div class="panel-card">
+                <div class="panel-top">
+                  <div class="icon-stack">
+                    <span>◦</span>
+                    <span>◌</span>
+                  </div>
+                  <button class="menu-btn" aria-label="Menu">☰</button>
+                </div>
+
+                <div class="panel-body">
+                  <h2>Blood Analysis</h2>
+                  <div class="metric-grid">
+                    <div class="metric-box">
+                      <span>Hb</span>
+                      <strong>9.8 g/dL</strong>
+                    </div>
+                    <div class="metric-box">
+                      <span>RBC</span>
+                      <strong>3.34</strong>
+                    </div>
+                    <div class="metric-box">
+                      <span>MCV</span>
+                      <strong>73 fL</strong>
+                    </div>
+                    <div class="metric-box">
+                      <span>MCH</span>
+                      <strong>22.5 pg</strong>
+                    </div>
+                  </div>
+
+                  <div class="risk-box risk-moderate">
+                    <span>Prototype risk</span>
+                    <strong>Moderate anemia</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="info-strip">
+          <article>
+            <span class="label">CBC</span>
+            <h3>Red blood cell profile</h3>
+          </article>
+          <article>
+            <span class="label">AI</span>
+            <h3>Pattern detection</h3>
+          </article>
+          <article>
+            <span class="label">Care</span>
+            <h3>Clinical guidance</h3>
+          </article>
+        </section>
+
+        <section class="analysis-section" id="analysis">
+          <div class="section-heading">
+            <p class="eyebrow">Diagnostic prototype</p>
+            <h2>Upload or enter CBC values</h2>
+          </div>
+
+          <div class="analysis-grid">
+            <form id="cbcForm" class="cbc-form">
+              <div class="field-row two-col">
+                <label>
+                  <span>Age</span>
+                  <input type="number" id="age" value="35" min="1" step="1" />
+                </label>
+                <label>
+                  <span>Sex</span>
+                  <select id="sex">
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="field-row two-col">
+                <label>
+                  <span>Hb (g/dL)</span>
+                  <input type="number" id="hb" value="9.8" min="0" step="0.1" />
+                </label>
+                <label>
+                  <span>RBC (x10^6/µL)</span>
+                  <input type="number" id="rbc" value="3.34" min="0" step="0.01" />
+                </label>
+              </div>
+
+              <div class="field-row two-col">
+                <label>
+                  <span>Hct (%)</span>
+                  <input type="number" id="hct" value="30.0" min="0" step="0.1" />
+                </label>
+                <label>
+                  <span>MCV (fL)</span>
+                  <input type="number" id="mcv" value="73" min="0" step="1" />
+                </label>
+              </div>
+
+              <div class="field-row two-col">
+                <label>
+                  <span>MCH (pg)</span>
+                  <input type="number" id="mch" value="22.5" min="0" step="0.1" />
+                </label>
+                <label>
+                  <span>MCHC (g/dL)</span>
+                  <input type="number" id="mchc" value="28.5" min="0" step="0.1" />
+                </label>
+              </div>
+
+              <button type="submit" class="primary-btn full-width">Analyze blood profile</button>
+            </form>
+
+            <aside class="results-panel" id="results">
+              <div class="results-card">
+                <div class="status-header">
+                  <span class="status-dot"></span>
+                  <p>Prototype result</p>
+                </div>
+
+                <h3 id="resultStatus">Waiting for data</h3>
+                <div class="risk-meter" aria-label="Risk meter">
+                  <div class="risk-fill" id="riskFill"></div>
+                </div>
+                <div class="risk-row">
+                  <span>Risk score</span>
+                  <strong id="riskScore">0%</strong>
+                </div>
+                <p id="resultSummary" class="summary-text">
+                  Enter CBC data to generate a prototype anemia classification.
+                </p>
+                <div class="disclaimer-box">
+                  This project is a prototype and is not medical advice.
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon">◉</div>
+            <h3>Medical design</h3>
+            <p>Clean, high-trust interface inspired by modern healthcare dashboards.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">✦</div>
+            <h3>AI-driven insights</h3>
+            <p>Prototype logic for anemia-related patterns using CBC indicators.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon">▣</div>
+            <h3>Educational value</h3>
+            <p>Clear explanation of hemoglobin, RBC count, MCV, MCH, and MCHC trends.</p>
+          </article>
+        </section>
+
+        <section class="about-section" id="about">
+          <div class="section-heading left-aligned">
+            <p class="eyebrow">About HemaNova AI</p>
+            <h2>Professional medical awareness platform</h2>
+          </div>
+          <div class="about-content">
+            <div>
+              <p>
+                HemaNova AI is built to help explain anemia awareness using visual health
+                dashboards, educational content, and a simplified hematology analysis workflow.
+              </p>
+              <p>
+                The platform focuses on the interpretation of CBC values such as Hb, RBC,
+                Hct, MCV, MCH, and MCHC, while emphasizing that the project is for
+                demonstration and learning purposes only.
+              </p>
+            </div>
+            <div class="about-badges">
+              <span>Educational</span>
+              <span>Responsive</span>
+              <span>Prototype</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
